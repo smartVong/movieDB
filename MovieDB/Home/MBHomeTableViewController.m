@@ -27,9 +27,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)getData
+- (void)getHomeDataInPage:(NSInteger)page
 {
-    
+    NSString *urlStr = [NSString stringWithFormat:@"http://api.themoviedb.org/3/tv/popular?api_key=dfac03be8305636d010563105aaed3c9&page=%ld",page];
 }
 
 #pragma mark - Table view data source
