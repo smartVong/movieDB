@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AFNetworking/AFNetworking.h>
 #import "MBHomeTableViewCell.h"
 
 @interface MBHomeTableViewController : UITableViewController
