@@ -18,16 +18,43 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pxS-We-fJT" id="h8S-rd-AFq">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSi-AA-Ka5">
-                                            <rect key="frame" x="8" y="19" width="304" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSi-AA-Ka5">
+                                            <rect key="frame" x="66" y="19" width="252" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4c-rh-G2O">
+                                            <rect key="frame" x="8" y="5" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="FBt-Zk-7S1"/>
+                                                <constraint firstAttribute="height" constant="50" id="Rqk-P2-cNU"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="p4c-rh-G2O" secondAttribute="bottom" constant="4" id="04D-he-CDO"/>
+                                        <constraint firstAttribute="trailing" secondItem="KSi-AA-Ka5" secondAttribute="trailing" id="Gf0-IT-h7t"/>
+                                        <constraint firstItem="KSi-AA-Ka5" firstAttribute="leading" secondItem="p4c-rh-G2O" secondAttribute="trailing" constant="8" id="P4w-Zw-htE"/>
+                                        <constraint firstItem="KSi-AA-Ka5" firstAttribute="leading" secondItem="h8S-rd-AFq" secondAttribute="leading" constant="66" id="Xfz-0D-7en"/>
+                                        <constraint firstItem="p4c-rh-G2O" firstAttribute="leading" secondItem="h8S-rd-AFq" secondAttribute="leading" constant="8" id="qPe-1o-n0U"/>
+                                        <constraint firstAttribute="trailing" secondItem="KSi-AA-Ka5" secondAttribute="trailing" constant="2" id="sia-fF-3jY"/>
+                                        <constraint firstAttribute="centerY" secondItem="KSi-AA-Ka5" secondAttribute="centerY" id="t7z-vl-qAS"/>
+                                        <constraint firstItem="p4c-rh-G2O" firstAttribute="top" secondItem="h8S-rd-AFq" secondAttribute="top" constant="5" id="tWh-Oj-Wg7"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="Gf0-IT-h7t"/>
+                                            <exclude reference="Xfz-0D-7en"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="tvName" destination="KSi-AA-Ka5" id="i96-V0-yAj"/>
+                                    <outlet property="tvNum" destination="p4c-rh-G2O" id="syf-Ca-VRX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -50,7 +77,7 @@
                 <tabBarController id="FEX-qV-IVC" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="dcX-kX-Eal">

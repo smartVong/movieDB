@@ -11,3 +11,5 @@
 
 
 #endif
+
+#define movieDB_API_KEY @"dfac03be8305636d010563105aaed3c9"

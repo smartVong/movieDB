@@ -12,4 +12,7 @@
 
 @interface MBHomeTableViewController : UITableViewController
 
+@property (strong, nonatomic) NSArray *popualrResult;
+@property (assign, nonatomic) NSInteger page;
+
 @end

@@ -11,5 +11,6 @@
 @interface MBHomeTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *tvName;
+@property (weak, nonatomic) IBOutlet UILabel *tvNum;
 
 @end

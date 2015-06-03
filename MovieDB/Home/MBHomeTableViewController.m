@@ -18,7 +18,12 @@
 {
     [super viewDidLoad];
     
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
+    self.popualrResult = [[NSArray alloc] init];
+    self.page = 1;
+    
+    [self getHomeDataInPage:self.page];
 }
 
 - (void)didReceiveMemoryWarning
@@ -29,19 +34,44 @@
 
 - (void)getHomeDataInPage:(NSInteger)page
 {
-    NSString *urlStr = [NSString stringWithFormat:@"http://api.themoviedb.org/3/tv/popular?api_key=dfac03be8305636d010563105aaed3c9&page=%ld",page];
+    NSString *urlStr = [NSString stringWithFormat:@"http://api.themoviedb.org/3/tv/popular?api_key=%@&page=%ld",movieDB_API_KEY,page];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:15];
+    [request setHTTPMethod:@"GET"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setResponseSerializer:[AFJSONResponseSerializer serializer]];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, NSDictionary* responseObject){
+        
+        self.popualrResult = [responseObject objectForKey:@"results"];
+        [self.tableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error){
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Internet Connection" message:@"Please check your internet vonnection" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alert animated:YES completion:nil];
+    }];
+    [operation start];
 }
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [self.popualrResult count];
 }
 
 
 - (MBHomeTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MBHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeCell" forIndexPath:indexPath];
+    
+    NSDictionary *dict = [self.popualrResult objectAtIndex:indexPath.row];
+    
+    cell.tvNum.text = [NSString stringWithFormat:@"%ld",self.page*(indexPath.row+1)];
+    cell.tvName.text = [dict objectForKey:@"name"];
     
     return cell;
 }
