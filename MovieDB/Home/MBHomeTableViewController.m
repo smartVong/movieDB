@@ -23,6 +23,7 @@
     self.popualrResult = [[NSArray alloc] init];
     self.page = 1;
     
+    self.loading = YES;
     [self getHomeDataInPage:self.page];
 }
 
@@ -34,7 +35,7 @@
 
 - (void)getHomeDataInPage:(NSInteger)page
 {
-    NSString *urlStr = [NSString stringWithFormat:@"http://api.themoviedb.org/3/tv/popular?api_key=%@&page=%ld",movieDB_API_KEY,page];
+    NSString *urlStr = [NSString stringWithFormat:@"http://api.themoviedb.org/3/tv/top_rated?api_key=%@&page=%ld",movieDB_API_KEY,page];
     NSURL *url = [NSURL URLWithString:urlStr];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:15];
@@ -45,19 +46,29 @@
     [operation setResponseSerializer:[AFJSONResponseSerializer serializer]];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, NSDictionary* responseObject){
         
-        self.popualrResult = [responseObject objectForKey:@"results"];
-        [self.tableView reloadData];
+        if([[responseObject objectForKey:@"results"] count]>0)
+        {
+            self.popualrResult = [responseObject objectForKey:@"results"];
+            [self.tableView reloadData];
+        }
+        else
+        {
+            self.page--;
+        }
+        
+        self.loading = NO;
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Internet Connection" message:@"Please check your internet vonnection" preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:nil]];
         [self presentViewController:alert animated:YES completion:nil];
+        self.loading = NO;
     }];
     [operation start];
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableView DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.popualrResult count];
@@ -70,7 +81,7 @@
     
     NSDictionary *dict = [self.popualrResult objectAtIndex:indexPath.row];
     
-    cell.tvNum.text = [NSString stringWithFormat:@"%ld",self.page*(indexPath.row+1)];
+    cell.tvNum.text = [NSString stringWithFormat:@"%ld",((self.page-1)*20)+indexPath.row+1];
     cell.tvName.text = [dict objectForKey:@"name"];
     
     return cell;
@@ -121,4 +132,24 @@
 }
 */
 
+#pragma mark - UIBarButtonItem Functions
+- (IBAction)goNext:(UIBarButtonItem *)sender
+{
+    if(!self.loading)
+    {
+        self.loading = YES;
+        self.page++;
+        [self getHomeDataInPage:self.page];
+    }
+}
+
+- (IBAction)goPrevious:(UIBarButtonItem *)sender
+{
+    if(self.page!=1&&!self.loading)
+    {
+        self.loading = YES;
+        self.page--;
+        [self getHomeDataInPage:self.page];
+    }
+}
 @end

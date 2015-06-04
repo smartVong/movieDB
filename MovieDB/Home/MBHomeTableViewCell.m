@@ -7,6 +7,7 @@
 //
 
 #import "MBHomeTableViewCell.h"
+#import "MBHomeTableViewController.h"
 
 @implementation MBHomeTableViewCell
 

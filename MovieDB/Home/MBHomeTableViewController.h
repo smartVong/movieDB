@@ -15,4 +15,9 @@
 @property (strong, nonatomic) NSArray *popualrResult;
 @property (assign, nonatomic) NSInteger page;
 
+@property (assign, nonatomic) BOOL loading;
+
+- (IBAction)goNext:(UIBarButtonItem *)sender;
+- (IBAction)goPrevious:(UIBarButtonItem *)sender;
+
 @end
