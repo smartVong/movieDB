@@ -13,7 +13,7 @@
 
 @interface MBHomeTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSArray *popualrResult;
+@property (strong, nonatomic) NSArray *popularResult;
 @property (assign, nonatomic) NSInteger page;
 
 @property (assign, nonatomic) BOOL loading;

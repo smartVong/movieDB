@@ -20,7 +20,7 @@
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    self.popualrResult = [[NSArray alloc] init];
+    self.popularResult = [[NSArray alloc] init];
     self.page = 1;
     
     self.loading = YES;
@@ -35,7 +35,7 @@
 
 - (void)getHomeDataInPage:(NSInteger)page
 {
-    NSString *urlStr = [NSString stringWithFormat:@"http://api.themoviedb.org/3/tv/top_rated?api_key=%@&page=%ld",movieDB_API_KEY,page];
+    NSString *urlStr = [NSString stringWithFormat:@"http://api.themoviedb.org/3/tv/popular?api_key=%@&page=%ld",movieDB_API_KEY,page];
     NSURL *url = [NSURL URLWithString:urlStr];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:15];
@@ -48,7 +48,7 @@
         
         if([[responseObject objectForKey:@"results"] count]>0)
         {
-            self.popualrResult = [responseObject objectForKey:@"results"];
+            self.popularResult = [responseObject objectForKey:@"results"];
             [self.tableView reloadData];
         }
         else
@@ -71,7 +71,7 @@
 #pragma mark - UITableView DataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.popualrResult count];
+    return [self.popularResult count];
 }
 
 
@@ -79,7 +79,7 @@
 {
     MBHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeCell" forIndexPath:indexPath];
     
-    NSDictionary *dict = [self.popualrResult objectAtIndex:indexPath.row];
+    NSDictionary *dict = [self.popularResult objectAtIndex:indexPath.row];
     
     cell.tvNum.text = [NSString stringWithFormat:@"%ld",((self.page-1)*20)+indexPath.row+1];
     cell.tvName.text = [dict objectForKey:@"name"];
@@ -127,6 +127,7 @@
 {
     UIStoryboard *mainStory = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MBTVInfoViewController *tvInfoVC = [mainStory instantiateViewControllerWithIdentifier:@"TVInfo"];
+    tvInfoVC.tvInfo = [NSDictionary dictionaryWithDictionary:[self.popularResult objectAtIndex:indexPath.row]];
     
     [self.navigationController pushViewController:tvInfoVC animated:YES];
 }
@@ -144,7 +145,7 @@
 #pragma mark - UIBarButtonItem Functions
 - (IBAction)goNext:(UIBarButtonItem *)sender
 {
-    if(!self.loading)
+    if(!self.loading&&self.page!=25)
     {
         self.loading = YES;
         self.page++;
