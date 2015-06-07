@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AFNetworking/AFNetworking.h>
 #import "MBHomeTableViewCell.h"
+#import "MBTVInfoViewController.h"
 
 @interface MBHomeTableViewController : UITableViewController
 

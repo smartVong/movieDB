@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED4825F91B20C8CF0018BB8A /* MBTVInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4825F81B20C8CF0018BB8A /* MBTVInfoViewController.m */; };
 		ED6C5D6F1B1DF55D0042B5BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6C5D6E1B1DF55D0042B5BE /* main.m */; };
 		ED6C5D721B1DF55D0042B5BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6C5D711B1DF55D0042B5BE /* AppDelegate.m */; };
 		ED6C5D781B1DF55D0042B5BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED6C5D761B1DF55D0042B5BE /* Main.storyboard */; };
@@ -33,6 +34,8 @@
 		7D2182A3EB5A3F6230D322A3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		810722248A38515CE7D1F3CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED096C301B1F777A000FCB60 /* movieDBConstants.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = movieDBConstants.pch; sourceTree = "<group>"; };
+		ED4825F71B20C8CF0018BB8A /* MBTVInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBTVInfoViewController.h; path = TVInfo/MBTVInfoViewController.h; sourceTree = "<group>"; };
+		ED4825F81B20C8CF0018BB8A /* MBTVInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBTVInfoViewController.m; path = TVInfo/MBTVInfoViewController.m; sourceTree = "<group>"; };
 		ED6C5D691B1DF55D0042B5BE /* MovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED6C5D6D1B1DF55D0042B5BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED6C5D6E1B1DF55D0042B5BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -86,6 +89,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		ED4825F61B20C8660018BB8A /* TVInfo */ = {
+			isa = PBXGroup;
+			children = (
+				ED4825F71B20C8CF0018BB8A /* MBTVInfoViewController.h */,
+				ED4825F81B20C8CF0018BB8A /* MBTVInfoViewController.m */,
+			);
+			name = TVInfo;
+			sourceTree = "<group>";
+		};
 		ED6C5D601B1DF55D0042B5BE = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +124,7 @@
 				ED6C5D701B1DF55D0042B5BE /* AppDelegate.h */,
 				ED6C5D711B1DF55D0042B5BE /* AppDelegate.m */,
 				ED6C5D981B1E04780042B5BE /* Home */,
+				ED4825F61B20C8660018BB8A /* TVInfo */,
 				ED6C5D761B1DF55D0042B5BE /* Main.storyboard */,
 				ED6C5D791B1DF55D0042B5BE /* Images.xcassets */,
 				ED6C5D7B1B1DF55D0042B5BE /* LaunchScreen.xib */,
@@ -295,6 +308,7 @@
 				ED6C5D721B1DF55D0042B5BE /* AppDelegate.m in Sources */,
 				ED6C5D941B1E032C0042B5BE /* MBHomeTableViewController.m in Sources */,
 				ED6C5D6F1B1DF55D0042B5BE /* main.m in Sources */,
+				ED4825F91B20C8CF0018BB8A /* MBTVInfoViewController.m in Sources */,
 				ED6C5D971B1E04120042B5BE /* MBHomeTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

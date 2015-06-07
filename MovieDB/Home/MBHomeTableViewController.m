@@ -122,6 +122,15 @@
 }
 */
 
+#pragma mark - UITableView Delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIStoryboard *mainStory = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MBTVInfoViewController *tvInfoVC = [mainStory instantiateViewControllerWithIdentifier:@"TVInfo"];
+    
+    [self.navigationController pushViewController:tvInfoVC animated:YES];
+}
+
 /*
 #pragma mark - Navigation
 
