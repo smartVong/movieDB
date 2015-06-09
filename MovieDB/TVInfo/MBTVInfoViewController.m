@@ -22,10 +22,58 @@
     [self setTVInfo];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self setBG];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setBG
+{
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = CGRectMake(0, 0, self.gradientView.frame.size.width, self.gradientView.frame.size.height);
+    
+    UIColor *c1 = [UIColor colorWithRed:0.09 green:0.7 blue:0.98 alpha:1.0];
+    UIColor *c2 = [UIColor colorWithRed:0.07 green:0.41 blue:0.95 alpha:1.0];
+    UIColor *c3 = [UIColor colorWithRed:0.81 green:0.46 blue:0.93 alpha:1.0];
+    
+    gradientLayer.colors = @[(id)c2.CGColor,(id)c3.CGColor,(id)c3.CGColor];
+    
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"colors"];
+    animation.toValue = @[(id)c1.CGColor,(id)c2.CGColor,(id)c2.CGColor];
+    animation.duration = 4.0;
+    animation.autoreverses = YES;
+    animation.repeatCount = HUGE_VALF;
+    
+    [gradientLayer addAnimation:animation forKey:@"colors"];
+    
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    shapeLayer.frame = CGRectMake(0, 0, self.gradientView.frame.size.width, self.gradientView.frame.size.height);
+    
+    UIBezierPath *path1 = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(-self.gradientView.frame.size.width/4, -self.gradientView.frame.size.height/4, self.gradientView.frame.size.width*1.5, self.gradientView.frame.size.height*1.5)];
+    UIBezierPath *path2 = [UIBezierPath bezierPathWithOvalInRect:shapeLayer.frame];
+    
+    shapeLayer.path = path1.CGPath;
+    
+    animation = [CABasicAnimation animationWithKeyPath:@"path"];
+    animation.toValue = (id)path2.CGPath;
+    animation.duration = 4.0;
+    animation.autoreverses = YES;
+    animation.repeatCount = HUGE_VALF;
+    
+    [shapeLayer addAnimation:animation forKey:@"path"];
+    gradientLayer.mask = shapeLayer;
+    
+    [self.gradientView.layer addSublayer:gradientLayer];
+    
+
 }
 
 - (void)setTVInfo

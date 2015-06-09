@@ -42,8 +42,7 @@
     [request setHTTPMethod:@"GET"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    [operation setResponseSerializer:[AFJSONResponseSerializer serializer]];
+    AFJSONRequestOperation *operation = [[AFJSONRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, NSDictionary* responseObject){
         
         if([[responseObject objectForKey:@"results"] count]>0)
@@ -60,7 +59,7 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error){
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Internet Connection" message:@"Please check your internet vonnection" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Internet Connection" message:@"Please check your internet connection" preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:nil]];
         [self presentViewController:alert animated:YES completion:nil];
         self.loading = NO;

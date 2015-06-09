@@ -11,6 +11,7 @@
 
 @interface MBTVInfoViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *gradientView;
 @property (weak, nonatomic) IBOutlet UIImageView *tvImage;
 @property (weak, nonatomic) IBOutlet UILabel *tvName;
 @property (weak, nonatomic) IBOutlet UILabel *airDate;

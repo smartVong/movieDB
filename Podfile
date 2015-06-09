@@ -1,3 +1,3 @@
-pod "AFNetworking", "~> 2.0"
-
 pod "AsyncImageView"
+
+pod "RestKit", '~> 0.20.0'
