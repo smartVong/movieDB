@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AsyncImageView/AsyncImageView.h>
+#import "PopularTV.h"
 
 @interface MBTVInfoViewController : UIViewController
 
@@ -20,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *averageVote;
 @property (weak, nonatomic) IBOutlet UILabel *voteCount;
 
-@property (strong, nonatomic) NSDictionary *tvInfo;
+@property (strong, nonatomic) PopularTV *popularTV;
 
 - (IBAction)goBack:(UIBarButtonItem *)sender;
 

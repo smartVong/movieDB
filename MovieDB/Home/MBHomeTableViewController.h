@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AFNetworking/AFNetworking.h>
+#import <RestKit/RestKit.h>
 #import "MBHomeTableViewCell.h"
 #import "MBTVInfoViewController.h"
+#import "PopularTV.h"
 
 @interface MBHomeTableViewController : UITableViewController
 

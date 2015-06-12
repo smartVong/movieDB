@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED0683F11B29DF0D007DF0A6 /* PopularTV.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0683F01B29DF0D007DF0A6 /* PopularTV.m */; };
 		ED4825F91B20C8CF0018BB8A /* MBTVInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4825F81B20C8CF0018BB8A /* MBTVInfoViewController.m */; };
 		ED6C5D6F1B1DF55D0042B5BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6C5D6E1B1DF55D0042B5BE /* main.m */; };
 		ED6C5D721B1DF55D0042B5BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6C5D711B1DF55D0042B5BE /* AppDelegate.m */; };
@@ -33,6 +34,8 @@
 		3C4561710442637FC7727CEB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7D2182A3EB5A3F6230D322A3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		810722248A38515CE7D1F3CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED0683EF1B29DF0D007DF0A6 /* PopularTV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopularTV.h; sourceTree = "<group>"; };
+		ED0683F01B29DF0D007DF0A6 /* PopularTV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopularTV.m; sourceTree = "<group>"; };
 		ED096C301B1F777A000FCB60 /* movieDBConstants.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = movieDBConstants.pch; sourceTree = "<group>"; };
 		ED4825F71B20C8CF0018BB8A /* MBTVInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBTVInfoViewController.h; path = TVInfo/MBTVInfoViewController.h; sourceTree = "<group>"; };
 		ED4825F81B20C8CF0018BB8A /* MBTVInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBTVInfoViewController.m; path = TVInfo/MBTVInfoViewController.m; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 			children = (
 				ED6C5D701B1DF55D0042B5BE /* AppDelegate.h */,
 				ED6C5D711B1DF55D0042B5BE /* AppDelegate.m */,
+				ED0683EF1B29DF0D007DF0A6 /* PopularTV.h */,
+				ED0683F01B29DF0D007DF0A6 /* PopularTV.m */,
 				ED6C5D981B1E04780042B5BE /* Home */,
 				ED4825F61B20C8660018BB8A /* TVInfo */,
 				ED6C5D761B1DF55D0042B5BE /* Main.storyboard */,
@@ -308,6 +313,7 @@
 				ED6C5D721B1DF55D0042B5BE /* AppDelegate.m in Sources */,
 				ED6C5D941B1E032C0042B5BE /* MBHomeTableViewController.m in Sources */,
 				ED6C5D6F1B1DF55D0042B5BE /* main.m in Sources */,
+				ED0683F11B29DF0D007DF0A6 /* PopularTV.m in Sources */,
 				ED4825F91B20C8CF0018BB8A /* MBTVInfoViewController.m in Sources */,
 				ED6C5D971B1E04120042B5BE /* MBHomeTableViewCell.m in Sources */,
 			);
