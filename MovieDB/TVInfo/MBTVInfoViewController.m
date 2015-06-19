@@ -78,7 +78,7 @@
 
 - (void)setTVInfo
 {
-    self.tvImage.imageURL = [NSURL URLWithString:self.popularTV.imageURL];
+    self.tvImage.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://image.tmdb.org/t/p/original%@",self.popularTV.imageURL]];
     
     self.tvName.text = self.popularTV.TVname;
     
@@ -99,21 +99,31 @@
         self.country.text = @"--------";
     }
     
-    self.popularity.text = [NSString stringWithFormat:@"%.6f",[self.popularTV.popularity floatValue]];
-    self.averageVote.text = [NSString stringWithFormat:@"%.1f",[self.popularTV.voteAverage floatValue]];
+    self.popularity.text = [NSString stringWithFormat:@"%.6f",self.popularTV.popularity.floatValue];
+    self.averageVote.text = [NSString stringWithFormat:@"%.1f",self.popularTV.voteAverage.floatValue];
     self.voteCount.text = [self setVoteCountWithCount:self.popularTV.voteCount];
+    
+    if([self checkFavoriteWith:self.popularTV])
+    {
+        [self.favoriteButton setTitle:@"Remove from favorite" forState:UIControlStateNormal];
+    }
+    
 }
 
-- (NSString*)setVoteCountWithCount:(NSInteger)count
+- (NSString*)setVoteCountWithCount:(NSNumber*)count
 {
     NSString *countStr = @"";
-    if(count>=1000)
+    if(count.integerValue>=1000)
     {
-        countStr = [NSString stringWithFormat:@"%.2fk",(float)count/1000];
+        countStr = [NSString stringWithFormat:@"%.2fk",count.floatValue/1000];
     }
-    else if (count>=1000000)
+    else if (count.integerValue>=1000000)
     {
-        countStr = [NSString stringWithFormat:@"%.2fm",(float)count/1000000];
+        countStr = [NSString stringWithFormat:@"%.2fm",count.floatValue/1000000];
+    }
+    else
+    {
+        countStr = [NSString stringWithFormat:@"%lu",count.integerValue];
     }
     
     return countStr;
@@ -133,4 +143,76 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (IBAction)addFavorite:(UIButton*)sender
+{
+    if([[sender titleForState:UIControlStateNormal] isEqualToString:@"Add to favorite"])
+    {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *path = [documentsDirectory stringByAppendingPathComponent:@"favorite"];
+        NSMutableArray *favorite = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        
+        if(![self checkFavoriteWith:self.popularTV])
+        {
+            if(favorite==nil)
+            {
+                favorite = [NSMutableArray arrayWithObject:self.popularTV];
+            }
+            else
+            {
+                [favorite addObject:self.popularTV];
+            }
+            
+            [NSKeyedArchiver archiveRootObject:favorite toFile:path];
+            
+            [self.favoriteButton setTitle:@"Remove from favorite" forState:UIControlStateNormal];
+        }
+    }
+    else
+    {
+        [self removeFavorite:self.popularTV];
+        
+        [self.favoriteButton setTitle:@"Add to favorite" forState:UIControlStateNormal];
+    }
+}
+
+#pragma mark - Favorite checker & remover
+- (BOOL)checkFavoriteWith:(PopularTV*)popularTV
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"favorite"];
+    NSMutableArray *favorite = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    
+    for (PopularTV *object in favorite)
+    {
+        if([object.TVid isEqualToString:popularTV.TVid])
+        {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (void)removeFavorite:(PopularTV*)popularTV
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"favorite"];
+    NSMutableArray *favorite = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    
+    for (PopularTV *object in favorite)
+    {
+        if([object.TVid isEqualToString:popularTV.TVid])
+        {
+            [favorite removeObject:object];
+            break;
+        }
+    }
+    
+    [NSKeyedArchiver archiveRootObject:favorite toFile:path];
+}
+
 @end

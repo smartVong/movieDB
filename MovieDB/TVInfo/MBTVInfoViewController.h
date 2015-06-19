@@ -21,8 +21,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *averageVote;
 @property (weak, nonatomic) IBOutlet UILabel *voteCount;
 
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+
 @property (strong, nonatomic) PopularTV *popularTV;
 
 - (IBAction)goBack:(UIBarButtonItem *)sender;
+- (IBAction)addFavorite:(UIButton*)sender;
 
 @end

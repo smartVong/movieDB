@@ -45,7 +45,7 @@
     
     // setup object mappings
     RKObjectMapping *popularMapping = [RKObjectMapping mappingForClass:[PopularTV class]];
-    [popularMapping addAttributeMappingsFromDictionary:@{@"name" : @"TVname", @"first_air_date" : @"firstAirDate", @"poster_path" : @"imageURL", @"origin_country" : @"origin", @"popularity" : @"popularity", @"vote_average" : @"voteAverage", @"vote_count" : @"voteCount"}];
+    [popularMapping addAttributeMappingsFromDictionary:@{@"id" : @"TVid", @"name" : @"TVname", @"first_air_date" : @"firstAirDate", @"poster_path" : @"imageURL", @"origin_country" : @"origin", @"popularity" : @"popularity", @"vote_average" : @"voteAverage", @"vote_count" : @"voteCount"}];
     
     // register mappings with the provider using a response descriptor
     RKResponseDescriptor *responseDescriptor =

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FEX-qV-IVC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FEX-qV-IVC">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -208,6 +208,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="addFavorite:" destination="ceU-0j-qxq" eventType="touchUpInside" id="Uob-Wt-GUX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQF-8i-ywo">
                                 <rect key="frame" x="15" y="356" width="290" height="35"/>
@@ -278,6 +281,7 @@
                         <outlet property="airDate" destination="lkD-Td-gdF" id="XP2-c7-iJX"/>
                         <outlet property="averageVote" destination="AvG-WU-LM2" id="5l9-fM-UBn"/>
                         <outlet property="country" destination="oui-f9-1Hv" id="k50-2c-zjQ"/>
+                        <outlet property="favoriteButton" destination="K4k-7g-QSn" id="Jmg-H1-Rb0"/>
                         <outlet property="gradientView" destination="1wi-XI-GML" id="5Mf-i1-Syg"/>
                         <outlet property="popularity" destination="vJy-Ct-w20" id="rco-7J-H4B"/>
                         <outlet property="tvImage" destination="eIp-wN-jKI" id="UQA-BC-CGw"/>
